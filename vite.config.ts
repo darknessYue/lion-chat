@@ -16,12 +16,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 5173,
-    proxy: {
-      '/api': {
-        target: 'https://dify.publicisgrowthos.com'
-      }
-    }
+    port: 5173
   },
   // css: {
   //   preprocessorOptions: {

@@ -2,10 +2,12 @@
 import Chatbox from './components/ChatLion/ChatLion.vue'
 
 const options = {
-  url: '',
-  key: '',
+  url: import.meta.env.VITE_OPENAI_API_URL,
+  key: import.meta.env.VITE_OPENAI_API_KEY,
   tool: true
 }
+
+console.log(options)
 
 </script>
 
