@@ -67,11 +67,6 @@
   "release-it": {
     "npm": {
       "publish": true
-    },
-    "git": {
-      "commitMessage": "chore: release %s",
-      "tagName": "v%s",
-      "requireCleanWorkingDir": false
     }
   }
 }
