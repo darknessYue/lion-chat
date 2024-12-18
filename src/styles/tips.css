@@ -1,0 +1,129 @@
+.o-tips {
+  margin-bottom: 30px;
+  max-width: 352px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.o-tips .o-tips__img {
+  display: block;
+  width: 124px;
+  margin: 65px auto -30px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 350px) {
+  .o-tips .o-tips__img {
+    margin-bottom: -30px;
+  }
+}
+.o-tips .o-tips__context {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px 16px 20px;
+  background-image: url("../assets/o-tips-bg.png");
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+@media (max-width: 350px) {
+  .o-tips .o-tips__context {
+    background-size: 100% 100%;
+  }
+}
+.o-tips .o-tips__context-inner {
+  position: relative;
+  z-index: 3;
+}
+.o-tips .o-tips__context:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-image: url("../assets/o-tips-bg.png");
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+.o-tips .o-tips__context-inner-title {
+  color: #333;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+.o-tips .o-tips__context-inner-desc {
+  margin-top: 16px;
+  color: #333;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  word-break: break-word;
+}
+.o-tips .o-tips__context-inner-desc span {
+  color: #0782F9;
+  font-weight: 500;
+}
+.o-tips .o-tips__context-inner-list {
+  margin-top: 16px;
+}
+.o-tips .o-tips__context-inner-list ul {
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-bottom: -16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.o-tips .o-tips__context-inner-list li {
+  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  /* // line-height: 44px; */
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+@media (max-width: 350px) {
+  .o-tips .o-tips__context-inner-list li {
+    width: 100%;
+  }
+}
+.o-tips .o-tips__context-inner-list li a {
+  color: #333;
+  display: block;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  line-height: 22px;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid var(--Background_White, #FFF);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 2.27%, rgba(242, 246, 255, 0.6) 103.41%);
+  box-shadow: 0px 3px 9px 0px rgba(80, 121, 216, 0.1);
+}
+.o-tips .o-tips__context-inner-list li .tips__context-inner-imgbox {
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-right: 1px;
+}
+.o-tips .o-tips__context-inner-list li img {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+.o-tips .o-tips__context-inner-list li span {
+  font-size: 14px;
+}
+.o-tips .o-tip__msg {
+  margin-top: 10px;
+  color: #333;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}

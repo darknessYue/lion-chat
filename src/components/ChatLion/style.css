@@ -1,0 +1,70 @@
+
+
+@import '../../styles/chatbox.css';
+
+@import '../../styles/qa.css';
+
+@import '../../styles/table.css';
+
+@import '../../styles/tips.css';
+
+#o-chatbot div, #o-chatbot span, #o-chatbot applet, #o-chatbot object, #o-chatbot iframe,
+#o-chatbot h1, #o-chatbot h2, #o-chatbot h3, #o-chatbot h4, #o-chatbot h5, #o-chatbot h6, #o-chatbot p, #o-chatbot blockquote, #o-chatbot pre,
+#o-chatbot a, #o-chatbot abbr, #o-chatbot acronym, #o-chatbot address, #o-chatbot big, #o-chatbot cite, #o-chatbot code,
+#o-chatbot del, #o-chatbot dfn, #o-chatbot em, #o-chatbot img, #o-chatbot ins, #o-chatbot kbd, #o-chatbot q, #o-chatbot s, #o-chatbot samp,
+#o-chatbot small, #o-chatbot strike, #o-chatbot strong, #o-chatbot sub, #o-chatbot sup, #o-chatbot tt, #o-chatbot var,
+#o-chatbot b, #o-chatbot u, #o-chatbot i, #o-chatbot center,
+#o-chatbot dl, #o-chatbot dt, #o-chatbot dd, #o-chatbot ol, #o-chatbot ul, #o-chatbot li,
+#o-chatbot fieldset, #o-chatbot form, #o-chatbot label, #o-chatbot legend,
+#o-chatbot table, #o-chatbot caption, #o-chatbot tbody, #o-chatbot tfoot, #o-chatbot thead, #o-chatbot tr, #o-chatbot th, #o-chatbot td,
+#o-chatbot article, #o-chatbot aside, #o-chatbot canvas, #o-chatbot details, #o-chatbot embed,
+#o-chatbot figure, #o-chatbot figcaption, #o-chatbot footer, #o-chatbot header, #o-chatbot hgroup,
+#o-chatbot menu, #o-chatbot nav, #o-chatbot output, #o-chatbot ruby, #o-chatbot section, #o-chatbot summary,
+#o-chatbot time, #o-chatbot mark, #o-chatbot audio, #o-chatbot video {
+  -webkit-tap-highlight-color: transparent;
+  font-family: huaweisans-regular, Arial, Helvetica, sans-serif !important;
+}
+
+@media (max-width: 374px) {
+  #o-chatbot.lang-en .chatbot-bubble-auto-chat {
+    font-size: 10px;
+  }
+}
+#o-chatbot.lang-en .chatbot-bubble-auto-chat.active {
+  height: 90px;
+}
+@media (max-width: 374px) {
+  #o-chatbot.lang-en .chatbot-bubble-auto-chat.active {
+    height: 120px;
+  }
+}
+#o-chatbot.lang-en .chatbot-bubble-say-hello h2 {
+  font-size: 14px;
+  white-space: normal;
+  line-height: 18px;
+}
+#o-chatbot.lang-en .chatbot-bubble-say-hello p {
+  white-space: normal;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
+}
+
+.chatbot-bubble-frame.lang-en .o-tips .o-tips__context:after {
+  height: 100px;
+}
+.chatbot-bubble-frame.lang-en .o-tips .o-tips__context-inner-desc {
+  font-size: 14px;
+}
+.chatbot-bubble-frame.lang-en .o-tips .o-tips__context-inner-list li span {
+  font-size: 12px;
+}
+.q-a-res-content span img {
+  display: block;
+  width: 100%;
+}
+
+.q-a-res-content span a {
+  color: #2970ff;
+  text-decoration: underline
+}
