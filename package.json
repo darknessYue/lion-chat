@@ -1,7 +1,6 @@
 {
   "name": "lion-chat",
-  "private": true,
-  "version": "0.0.5",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/umd/lion-chat.umd.cjs",
   "module": "./dist/es/lion-chat.js",
