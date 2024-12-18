@@ -1,7 +1,7 @@
 {
   "name": "lion-chat",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "./dist/umd/lion-chat.umd.cjs",
   "module": "./dist/es/lion-chat.js",
@@ -63,5 +63,15 @@
     "vite": "^5.1.4",
     "vite-plugin-dts": "^4.3.0",
     "vue-tsc": "^1.8.27"
+  },
+  "release-it": {
+    "npm": {
+      "publish": true
+    },
+    "git": {
+      "commitMessage": "chore: release %s",
+      "tagName": "v%s",
+      "requireCleanWorkingDir": false
+    }
   }
 }
