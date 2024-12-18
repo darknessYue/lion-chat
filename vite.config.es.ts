@@ -30,7 +30,7 @@ export default defineConfig({
       formats: ["es"]
     },
     rollupOptions: {
-      external: ["vue", "lodash-es", "axios"],
+      external: ["vue", "axios"],
       output: {
         assetFileNames: (chunkInfo) => {
           if (chunkInfo.name === "style.css") {
