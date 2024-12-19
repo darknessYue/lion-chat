@@ -337,6 +337,10 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .chatbot-bubble-title.sticky {
@@ -372,7 +376,21 @@
 
 .chatbot-bubble-title-back {
   display: block;
-  width: 24px;
+  width: 68px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+
+  .chatbot-bubble-title-back {
+    width: 24px;
+  }
+}
+
+.chatbot-bubble-title-back img {
+  display: block;
+  width: 24px!important;
   height: 24px;
   flex-shrink: 0;
 }

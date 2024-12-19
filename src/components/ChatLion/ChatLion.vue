@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="chatbot-bubble-button-imgbox">
-            <img src="../../assets/lion-default.png" class="robot-default" alt="robot" />
+            <img src="../../assets/lion-default-popup.png" class="robot-default" alt="robot" />
           </div>
         </div>
       </div>
