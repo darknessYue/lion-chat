@@ -1,17 +1,18 @@
 <template>
     <div class="" v-if="showPopup">
-      <div id="chatbot-bubble-button" :style="{'--chatbot-animation-duration': `${animationDuration}s`}" :class="{'chatbot-bubble-button-sayhi': isActive}" @click.prevent="handleClick">
-        <div class="chatbot-bubble-button-inner">
-          <div :class="{'chatbot-bubble-auto-chat': true, 'active': !isShow && isActive}">
-            <div :class="{'chatbot-bubble-say-hello': true, 'no-support': !ifSupportDropFilter}">
-              <h2>{{ t('welcome') }}</h2>
-              <p>{{ t('welcome_2') }}<span>{{ t('welcome_3') }}</span>{{ t('welcome_4') }}</p>
+      <div id="chatbot-bubble-button" ref="chatBoxRef" v-draggable :style="{'--chatbot-animation-duration': `${animationDuration}s`}" :class="{'chatbot-bubble-button-sayhi': isActive}" @click.prevent="handleClick">
+        
+          <div class="chatbot-bubble-button-inner" v-show="!isShow">
+            <div :class="{'chatbot-bubble-auto-chat': true, 'active': !isShow && isActive}">
+              <div :class="{'chatbot-bubble-say-hello': true, 'no-support': !ifSupportDropFilter}">
+                <h2>{{ t('welcome') }}</h2>
+                <p>{{ t('welcome_2') }}<span>{{ t('welcome_3') }}</span>{{ t('welcome_4') }}</p>
+              </div>
+            </div>
+            <div class="chatbot-bubble-button-imgbox">
+              <img src="../../assets/lion-default-popup.png" class="robot-default" alt="robot" />
             </div>
           </div>
-          <div class="chatbot-bubble-button-imgbox">
-            <img src="../../assets/lion-default-popup.png" class="robot-default" alt="robot" />
-          </div>
-        </div>
       </div>
       <teleport to="body">
         <div v-if="isShow" class="chatbot-bubble-frame-mask"></div>
@@ -99,6 +100,7 @@
   import { t } from '../../i18n';
   import { disableScroll, enableScroll } from '../../utils';
   const childRefs = ref<any[]>([]);
+  const chatBoxRef = ref<HTMLDivElement | null>(null);
 
   // 在更新之前重置 childRefs 数组
   onBeforeUpdate(() => {
@@ -200,6 +202,13 @@
   }
   
   const handleClick = () => {
+    if(chatBoxRef.value) {
+      if(chatBoxRef.value.classList.contains('dragging')) {
+        return
+      }
+    }
+    
+    isActive.value = false;
     isShow.value = !isShow.value;
     if(isShow.value) {
       disableScroll()
@@ -276,12 +285,15 @@
     }
     setTimeout(() => {
       isActive.value = true;
+      setTimeout(() => {
+        isActive.value = false;
+      }, 2000)
     }, 0)
-    window.addEventListener('scroll', checkScroll)
+    // window.addEventListener('scroll', checkScroll)
   })
   
   onUnmounted(() => {
-    window.removeEventListener('scroll', checkScroll)
+    // window.removeEventListener('scroll', checkScroll)
   })
   
   provide('scrollBottom', scrollBottom)

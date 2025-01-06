@@ -2,12 +2,14 @@ import { createApp } from 'vue'
 import './index.css'
 import App from './App.vue'
 import preventScroll from './directives/scroll';
+import draggable from './directives/draggable';
 import { setLanguage } from './i18n/index';
 
 
 function bootstrap() {
   const app = createApp(App)
   app.directive('preventScroll', preventScroll);
+  app.directive('draggable', draggable);
   app.mount('#o-chatbot')
 }
 
