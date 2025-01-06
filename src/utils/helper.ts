@@ -1,6 +1,6 @@
 
 import { each } from "lodash-es";
-import { App, Plugin } from "vue";
+import { App, Plugin, Directive } from "vue";
 
 interface CheckCondition {
   format?: string[];
@@ -51,10 +51,13 @@ export const withInstall = <T>(component: T) => {
 }
 
 
-export function makeInstaller(components: Plugin[]) {
+export function makeInstaller(components: Plugin[], directives: {name: string, d: Directive}[]) {
   const installer = (app: App) => {
     each(components, (c) => {
       app.use(c);
+    });
+    each(directives, (d) => {
+      app.directive(d.name, d.d);
     });
   };
   return installer as Plugin;
