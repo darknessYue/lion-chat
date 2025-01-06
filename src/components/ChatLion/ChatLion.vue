@@ -269,15 +269,15 @@
     })
   }
   
-  let scrollCheckId:any;
-  function checkScroll() {
-    isActive.value = false;
-    clearTimeout(scrollCheckId)
+  // let scrollCheckId:any;
+  // function checkScroll() {
+  //   isActive.value = false;
+  //   clearTimeout(scrollCheckId)
   
-    scrollCheckId = setTimeout(() => {
-      isActive.value = true;
-    }, 2000);
-  }
+  //   scrollCheckId = setTimeout(() => {
+  //     isActive.value = true;
+  //   }, 2000);
+  // }
     
   onMounted(() => {
     if (!window.CSS.supports('backdrop-filter', 'blur(5px)')) {
