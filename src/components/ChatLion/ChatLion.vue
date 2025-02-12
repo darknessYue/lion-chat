@@ -2,7 +2,8 @@
     <div class="" v-if="showPopup">
       <div id="chatbot-bubble-button" ref="chatBoxRef" v-draggable :style="{'--chatbot-animation-duration': `${animationDuration}s`}" :class="{'chatbot-bubble-button-sayhi': isActive}" @click.prevent="handleClick">
         
-          <div class="chatbot-bubble-button-inner" v-show="!isShow">
+          <!-- <div class="chatbot-bubble-button-inner" v-show="!isShow"> -->
+            <div class="chatbot-bubble-button-inner">
             <div :class="{'chatbot-bubble-auto-chat': true, 'active': !isShow && isActive}">
               <div :class="{'chatbot-bubble-say-hello': true, 'no-support': !ifSupportDropFilter}">
                 <h2>{{ t('welcome') }}</h2>
@@ -30,7 +31,7 @@
             <h1 :class="{'chatbot-bubble-title': true, 'sticky': isSticky > 100}">
               <div class="chatbot-bubble-title-head">
                 <a class="chatbot-bubble-title-back" href="javascript:;" @click="handleClick">
-                  <img src="../../assets/back.png" alt="" srcset="" />
+                  <img src="../../assets/close.png" alt="" srcset="" />
                 </a>
                 <div class="chatbot-bubble-title-text">
                   <img src="../../assets/o-top.png" alt="">
