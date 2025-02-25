@@ -55,8 +55,14 @@ export function replaceCode(html: string) {
   return html.replace(regex, '');
 }
 
+
+export function replaceIframe(html: string) {
+  const regex = /···iframe[\s\S]*?```/g;
+  return html.replace(regex, `<iframe src="${regex}" width="100%" height="500px"></iframe>`);
+}
+
 export function markdownTransform(html: string) {
-  return replaceAToImg(wrapTableInDiv(html));
+  return replaceIframe(replaceAToImg(wrapTableInDiv(html)));
 }
 
 // 方法用于生成两个不重复的0-9之间的随机整数
