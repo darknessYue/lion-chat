@@ -28,6 +28,7 @@ export async function sse({payload, progress, end, onerror, options}: {options: 
         "files": []
       }),
       signal: signal,
+      openWhenHidden: true,
       async onopen() {
         // console.log('sse', controller, state.controller)
       },

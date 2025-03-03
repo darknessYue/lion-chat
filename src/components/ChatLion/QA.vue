@@ -84,15 +84,15 @@ const sanitize = (str:string) => {
 }
 
 // 页面切换 重新请求
-const handleVisibilityChange = () => {
-  const visibilityState = document.visibilityState;
-  if (visibilityState === 'visible') {
-    if(!isEnd.value) {
-      isLoading.value = true;
-      answer.value = props.answer
-    }
-  }
-};
+// const handleVisibilityChange = () => {
+//   const visibilityState = document.visibilityState;
+//   if (visibilityState === 'visible') {
+//     if(!isEnd.value) {
+//       isLoading.value = true;
+//       answer.value = props.answer
+//     }
+//   }
+// };
 const scrollBottom:any = inject('scrollBottom');
 
 const getAnswer = async () => {
@@ -146,11 +146,11 @@ onMounted(() => {
   // questionList.value = questionList.value.filter(item => !history.includes(item))
   // randomNumber.value = generateUniqueRandomNumbers(questionList.value.length - 1)
   // 监听页面切换
-  document.addEventListener('visibilitychange', handleVisibilityChange);
+  // document.addEventListener('visibilitychange', handleVisibilityChange);
 })
 
 onUnmounted(() => {
-  document.removeEventListener('visibilitychange', handleVisibilityChange);
+  // document.removeEventListener('visibilitychange', handleVisibilityChange);
 })
 
 defineExpose({
