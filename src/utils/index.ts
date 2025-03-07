@@ -44,6 +44,14 @@ export function replaceAToImg(html:string) {
           // 替换为<img>标签
           return `<img src="${href}" alt="${text}" />`;
       }
+      // const iframeRegex = /(kol-analysis\/static\/html)/i;
+      // if (iframeRegex.test(href)) {
+      //     if(html.indexOf(`<iframe src="${href}"`) !== -1) {
+      //       return match;
+      //     }
+      //     // 替换为<img>标签
+      //     return `<iframe src="${href}" width="100%" height="500px" />`;
+      // }
       // 不是图片链接则保留原始<a>标签
       return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
   });
@@ -57,12 +65,12 @@ export function replaceCode(html: string) {
 
 
 export function replaceIframe(html: string) {
-  const regex = /···iframe[\s\S]*?```/g;
+  const regex = /(kol-analysis\/static\/html)/g;
   return html.replace(regex, `<iframe src="${regex}" width="100%" height="500px"></iframe>`);
 }
 
 export function markdownTransform(html: string) {
-  return replaceIframe(replaceAToImg(wrapTableInDiv(html)));
+  return replaceAToImg(wrapTableInDiv(html));
 }
 
 // 方法用于生成两个不重复的0-9之间的随机整数

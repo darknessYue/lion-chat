@@ -11,7 +11,7 @@
       <div class="q-a-res-content">
         <p class="q-a-res-content-nickname">{{ t('o_nickname') }}</p>
         <span>
-          <div v-if="isLoading" class="loading-box"><div class="loading-dot"></div></div>
+          <div v-if="isLoading || (!isLoading && answer === '')" class="loading-box"><div class="load-text">{{ t('o_loading') }}</div><div class="loading-dot"></div></div>
           <template v-else>
             <MdPreview editor-id="res-o-answer"  :model-value="answer" :sanitize="sanitize" />
           </template>
@@ -101,10 +101,12 @@ const getAnswer = async () => {
       options: props.options as ChatOptions,
       payload: props.context + props.message,
       progress: (data: string) => {
-        if(data && isLoading.value) {
+        const str = data.trim()
+        if(str && isLoading.value) {
           isLoading.value = false;
         }
-        answer.value = replaceCode(answer.value + data)
+        answer.value = replaceCode(answer.value + str)
+        
         scrollBottom && scrollBottom()
       },
       end: () => {

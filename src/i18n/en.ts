@@ -19,6 +19,7 @@ export default {
   net_cancel: 'Request cancelled',
   more_tips: 'You may also want to know the following questions:',
   sse_context: '',
+  o_loading: 'Thinking',
   questions: [
     // 'Agenda of OTF?',
     // 'Full name of OTF?',

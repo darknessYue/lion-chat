@@ -100,10 +100,16 @@
 .loading-box {
   display: flex;
   height: 1.25rem;
-  width: 1.5rem;
+  min-width: 1.5rem;
   justify-content: center;
   align-items: center;
+  padding-right: 10px;
+  gap: 16px;
 }
+
+/* .loading-box .load-text {
+  margin-right: 10px;
+} */
 
 .loading-dot, .loading-dot:after, .loading-dot:before {
   width: 4px;
