@@ -118,7 +118,8 @@
   export interface ChatOptions {
     url: string,
     key: string,
-    tool?: boolean
+    tool?: boolean,
+    inputs?: Record<string, any>
   }
 
   const props = withDefaults(defineProps<{
@@ -127,7 +128,8 @@
   options: () => ({
     url: '',
     key: '',
-    tool: false
+    tool: false,
+    inputs: {}
   })
 });
   

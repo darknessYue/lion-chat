@@ -20,7 +20,7 @@ export async function sse({payload, progress, end, onerror, options}: {options: 
         "Authorization": "Bearer " + options.key
       },
       body: JSON.stringify({
-        "inputs": {},
+        "inputs": options.inputs || {},
         "query": payload + t('sse_context'),
         "response_mode": "streaming",
         "conversation_id": state.conversation_id,

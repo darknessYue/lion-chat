@@ -4,7 +4,10 @@ import Chatbox from './components/ChatLion/ChatLion.vue'
 const options = {
   url: import.meta.env.VITE_OPENAI_API_URL,
   key: import.meta.env.VITE_OPENAI_API_KEY,
-  tool: true
+  tool: true,
+  inputs: {
+    role: 'admin'
+  }
 }
 
 console.log(options)
