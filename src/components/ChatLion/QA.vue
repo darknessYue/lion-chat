@@ -101,7 +101,7 @@ const getAnswer = async () => {
       options: props.options as ChatOptions,
       payload: props.context + props.message,
       progress: (data: string) => {
-        const str = data.trim()
+        const str = data
         if(str && isLoading.value) {
           isLoading.value = false;
         }
