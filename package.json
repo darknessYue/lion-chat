@@ -1,6 +1,6 @@
 {
   "name": "lion-chat",
-  "version": "1.2.1",
+  "version": "1.2.2-beta",
   "type": "module",
   "main": "./dist/umd/lion-chat.umd.cjs",
   "module": "./dist/es/lion-chat.js",
@@ -35,7 +35,8 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "md-editor-v3": "^4.21.0"
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
