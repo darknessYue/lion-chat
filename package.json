@@ -1,6 +1,6 @@
 {
   "name": "lion-chat",
-  "version": "1.2.2-beta",
+  "version": "1.3.0",
   "type": "module",
   "main": "./dist/umd/lion-chat.umd.cjs",
   "module": "./dist/es/lion-chat.js",
@@ -35,22 +35,24 @@
     "preview": "vite preview"
   },
   "peerDependencies": {
-    "vue": "^3.0.0",
-    "md-editor-v3": "^4.21.0"
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
     "axios": "^1.6.7",
-    "md-editor-v3": "^4.21.0",
+    "dompurify": "^3.2.6",
+    "marked": "^16.2.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "typed.js": "^2.1.0",
-    "vue": "^3.4.19",
+    "vue": "^3.0.0",
     "vue-router": "^4.3.0",
     "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/lodash-es": "^4.17.12",
+    "@types/marked": "^5.0.2",
     "@types/node": "^20.11.24",
     "@vitejs/plugin-vue": "^5.0.4",
     "lodash-es": "^4.17.21",

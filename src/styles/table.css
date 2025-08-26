@@ -2,7 +2,7 @@
 .table_container {
   width: 100%;
   overflow-x: auto;
-  padding: 20px 0;
+  padding: 20px 5px 20px 0;
 }
 
 .table_container img {
@@ -18,7 +18,8 @@
   box-sizing: border-box;
   font-size: 14px;
   /* text-align: center; */
-  width: 500px;
+  min-width: 500px;
+  width: 100%;
 }
 
 .table_container tr {

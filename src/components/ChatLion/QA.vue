@@ -13,7 +13,8 @@
         <span>
           <div v-if="isLoading || (!isLoading && answer === '')" class="loading-box"><div class="load-text">{{ t('o_loading') }}</div><div class="loading-dot"></div></div>
           <template v-else>
-            <MdPreview editor-id="res-o-answer"  :model-value="answer" :sanitize="sanitize" />
+            <div class="markdown-content" v-html="renderedAnswer"></div>
+            <!-- <MdPreview editor-id="res-o-answer"  :model-value="answer" :sanitize="sanitize" /> -->
           </template>
         </span>
         <div v-if="isEnd && randomNumber?.length" class="recommend-questions">
@@ -30,16 +31,22 @@
 
 <script setup lang="ts">
 import { sse } from '../../utils/sse';
-import { inject, onMounted, onUnmounted, ref } from 'vue';
+import { computed, inject, onMounted, onUnmounted, ref } from 'vue';
 import { t } from '../../i18n/index';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 
-import { MdPreview  } from 'md-editor-v3';
+
+// import { MdPreview  } from 'md-editor-v3';
 import { markdownTransform, replaceCode } from '../../utils/index';
 import { ChatItem, ChatOptions } from './ChatLion.vue';
 
 const questionList = ref<string[]>(t('questions'))
 
-
+const renderMarkdown = (content: string): string => {
+  const rawHtml = marked(content) as string;
+  return DOMPurify.sanitize(markdownTransform(rawHtml));
+};
 
 // const { setConversationId, conversation_id } = useUserStore()
 
@@ -79,9 +86,9 @@ const answer = ref<string>(props.answer);
 
 
 const randomNumber = ref<number[]>()
-const sanitize = (str:string) => {
-  return markdownTransform(str)
-}
+// const sanitize = (str:string) => {
+//   return markdownTransform(str)
+// }
 
 // 页面切换 重新请求
 // const handleVisibilityChange = () => {
@@ -94,6 +101,10 @@ const sanitize = (str:string) => {
 //   }
 // };
 const scrollBottom:any = inject('scrollBottom');
+
+const renderedAnswer = computed(() => {
+  return renderMarkdown(answer.value);
+});
 
 const getAnswer = async () => {
   try {

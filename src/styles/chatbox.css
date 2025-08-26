@@ -343,6 +343,7 @@
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid transparent;
+  margin: 0;
 }
 
 .chatbot-bubble-title .chatbot-bubble-title-text {
