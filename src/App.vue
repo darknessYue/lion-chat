@@ -6,7 +6,8 @@ const options = {
   key: import.meta.env.VITE_OPENAI_API_KEY,
   tool: true,
   inputs: {
-    role: 'admin'
+    role: 'admin',
+    userid: 'user-1214'
   }
 }
 

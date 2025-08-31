@@ -66,7 +66,7 @@
                     :context="item.context"
                     @change="updateHistory"
                     @add="addMessage"
-                    :options="props.options"
+                    :options="apiOptions"
                     :ref="el => { if (el){ childRefs[index] = el } }"
                   />
                 </template>
@@ -74,6 +74,17 @@
             </div>
           </div>
           <div class="chatbot-bubble-input-box">
+
+            
+            <div class="chatbot-bubble-input-select">
+              <Dropdown
+                v-model="selectedProject"
+                :options="projectOptions"
+                placeholder="请选择项目类型"
+                @change="handleProjectChange"
+              />
+            </div>
+
             <div class="chatbot-bubble-input">
               <div class="chatbot-bubble-input-inner">
                 <textarea class="chatbot-bubble-input-textarea" ref="textarea" :placeholder="t('textarea_placeholder')" style="resize: none; height: 34px;" v-model="input" @keydown.prevent.enter="sendMessage"></textarea>
@@ -94,12 +105,14 @@
   </template>
   
   <script setup lang="ts">
-  import { onMounted, onUnmounted, provide, ref, onBeforeUpdate } from 'vue';
+  import { onMounted, onUnmounted, provide, ref, onBeforeUpdate, computed } from 'vue';
   import QA from './QA.vue';
   import Tips from './Tips.vue';
   import { reset, state } from './chatStore';
   import { t } from '../../i18n';
   import { disableScroll, enableScroll } from '../../utils';
+  import Dropdown from './DropDown.vue'; 
+
   const childRefs = ref<any[]>([]);
   const chatBoxRef = ref<HTMLDivElement | null>(null);
 
@@ -148,6 +161,33 @@
   const animationDuration = ref(0)
   // 最大化
   const isMaxSize = ref(false)
+
+  // 下拉选择
+  const selectedProject = ref<number>(0);
+  const handleProjectChange = (option: any) => {
+    console.log('Selected project:', option);
+  };
+  // 下拉选项
+  const projectOptions = ref<any[]>([
+    {
+      label: '项目相关',
+      value: 1
+    },
+    {
+      label: '项目无关',
+      value: 0
+    }
+  ])
+
+  const apiOptions =  computed(() => {
+    return {
+      ...props.options,
+      inputs: {
+        ...props.options.inputs,
+        project: selectedProject.value
+      }
+    }
+  })
   
   let timeout: any = null;
   
@@ -306,4 +346,7 @@
   
   <style >
   @import './style.css';
+
+  /* 下拉样式 */
+
   </style>

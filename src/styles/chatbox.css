@@ -252,7 +252,16 @@
   left: 0;
   width: 100%;
   padding-bottom: 20px;
+  z-index: 90;
   /* background: linear-gradient(0deg, rgb(249, 250, 251) 40%, rgba(255, 255, 255, 0) 100%); */
+}
+
+.chatbot-bubble-input-select {
+  width: 80px;
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  z-index: 2;
 }
 
 .chatbot-bubble-input-inner {
