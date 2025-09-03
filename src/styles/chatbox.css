@@ -96,6 +96,7 @@
   opacity: 0;
   transition: 0.01s linear;
   white-space: nowrap;
+  margin: 0;
 }
 @media (max-width: 374px) {
   .chatbot-bubble-auto-chat .chatbot-bubble-say-hello h2 {

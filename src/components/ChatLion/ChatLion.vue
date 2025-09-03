@@ -76,14 +76,14 @@
           <div class="chatbot-bubble-input-box">
 
             
-            <div class="chatbot-bubble-input-select">
+            <!-- <div class="chatbot-bubble-input-select">
               <Dropdown
                 v-model="selectedProject"
                 :options="projectOptions"
                 placeholder="请选择项目类型"
                 @change="handleProjectChange"
               />
-            </div>
+            </div> -->
 
             <div class="chatbot-bubble-input">
               <div class="chatbot-bubble-input-inner">
