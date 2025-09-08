@@ -4,6 +4,9 @@
       <div class="q-a-req-content">
         <span>{{ message }}</span>
         <div style="height: 18px;"></div>
+        <span class="q-a-req-content-copy" @click="copyTextHandle(message)">{{ t('copy') }}
+          <RightIcon v-if="copySuccess" />
+        </span>
       </div>
     </div>
     <div class="q-a-res">
@@ -38,14 +41,32 @@ import DOMPurify from 'dompurify';
 
 
 // import { MdPreview  } from 'md-editor-v3';
-import { markdownTransform, replaceCode } from '../../utils/index';
+import { copyText, markdownTransform, replaceCode } from '../../utils/index';
 import { ChatItem, ChatOptions } from './ChatLion.vue';
+import RightIcon from './RightIcon.vue';
 
 const questionList = ref<string[]>(t('questions'))
+const copySuccess = ref(false)
 
 const renderMarkdown = (content: string): string => {
   const rawHtml = marked(content) as string;
-  return DOMPurify.sanitize(markdownTransform(rawHtml));
+  const sanitizedHtml = DOMPurify.sanitize(rawHtml, {ADD_TAGS: ['img'],ADD_ATTR: ['src', 'alt', 'height', 'width']});
+  
+  
+  // 为图片添加包装容器和错误处理
+  const modifiedHtml = sanitizedHtml.replace(/<img([^>]*)>/g, (match: any, imgAttrs: any) => {
+    return `
+      <span class="img-wrapper" style="display: inline-block; position: relative; min-height: 20px; min-width: 20px;">
+        <img${imgAttrs} 
+             onload="this.parentElement.style.minHeight='auto'; this.parentElement.style.minWidth='auto';"
+             onerror="this.style.display='none'">
+      </span>
+    `;
+  });
+  
+  // 为a标签添加target="_blank"和rel="noopener noreferrer"属性
+  const finalHtml = modifiedHtml.replace(/<a(?![^>]*target=)/g, '<a target="_blank" rel="noopener noreferrer"');
+  return markdownTransform(finalHtml);
 };
 
 // const { setConversationId, conversation_id } = useUserStore()
@@ -106,6 +127,22 @@ const renderedAnswer = computed(() => {
   return renderMarkdown(answer.value);
 });
 
+
+const timer = ref<any>(null)
+const copyTextHandle = async (text: string) => {
+  const success = await copyText(text);
+  if (success) {
+    copySuccess.value = true;
+    timer.value && clearTimeout(timer.value);
+    timer.value = setTimeout(() => {
+      copySuccess.value = false;
+    }, 2000);
+  } else {
+    copySuccess.value = false;
+  }
+}
+
+
 const getAnswer = async () => {
   try {
     await sse({
@@ -163,6 +200,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  timer.value && clearTimeout(timer.value);
   // document.removeEventListener('visibilitychange', handleVisibilityChange);
 })
 

@@ -129,3 +129,63 @@ export function enableScroll() {
   // document.body.style.overflow = 'auto';
   // window.scrollTo(0, scrollTop);
 }
+
+
+/**
+ * 兼容性文本复制方法
+ * @param text - 需要复制的文本
+ * @returns 复制成功返回true，失败返回false
+ */
+export async function copyText(text: string): Promise<boolean> {
+  // 1. 优先使用现代 Clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // Clipboard API 失败时回退到传统方法
+      return fallbackCopyText(text);
+    }
+  } else {
+    // 2. 回退到传统方法
+    return fallbackCopyText(text);
+  }
+}
+
+/**
+ * 传统复制方法（兼容老版本浏览器）
+ * @param text - 需要复制的文本
+ * @returns 复制是否成功
+ */
+function fallbackCopyText(text: string): boolean {
+  try {
+    // 创建临时 textarea 元素
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    
+    // 设置样式使其不可见
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '-9999px';
+    textarea.style.opacity = '0';
+    textarea.style.pointerEvents = 'none';
+    
+    // 添加到页面
+    document.body.appendChild(textarea);
+    
+    // 选择文本并复制
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // 兼容移动端
+    
+    // 执行复制
+    const success = document.execCommand('copy');
+    
+    // 清理临时元素
+    document.body.removeChild(textarea);
+    
+    return success;
+  } catch (error) {
+    console.error('复制失败:', error);
+    return false;
+  }
+}

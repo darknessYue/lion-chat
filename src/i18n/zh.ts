@@ -20,6 +20,7 @@ export default {
   more_tips: '您可能还想知道以下问题：',
   sse_context: '',
   o_loading: '正在思考中',
+  copy: '复制',
   questions: [
     // 'OTF有哪些议程?',
     // 'OTF的全称是什么?',

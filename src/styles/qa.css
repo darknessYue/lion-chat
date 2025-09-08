@@ -162,7 +162,27 @@
   border-radius: 8px;
   padding: 5px 8px;
 }
-
+.q-a-req-content:hover .q-a-req-content-copy {
+  opacity: 1;
+}
+.q-a-req-content-copy {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  transform: scale(0.7);
+  transform-origin: left top;
+  cursor: pointer;
+  opacity: 0;
+  display: flex!important;
+  white-space: nowrap;
+  align-items: center;
+  gap: 3px;
+  transform: opacity 0.3s ease-in-out;
+}
 @keyframes flashing {
   0% {
     background-color: #667085;

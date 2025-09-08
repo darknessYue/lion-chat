@@ -101,7 +101,6 @@
     padding: 4px 8px;
     border: 1px solid #d1d5db;
     border-radius: 4px;
-    background-color: white;
     cursor: pointer;
     transition: border-color 0.2s;
     background-color: #fff;
@@ -129,7 +128,7 @@
   
   .dropdown-list {
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 0;
     right: 0;
     margin-top: 4px;

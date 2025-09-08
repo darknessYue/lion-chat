@@ -75,28 +75,36 @@
           </div>
           <div class="chatbot-bubble-input-box">
 
-            
-            <!-- <div class="chatbot-bubble-input-select">
-              <Dropdown
-                v-model="selectedProject"
-                :options="projectOptions"
-                placeholder="请选择项目类型"
-                @change="handleProjectChange"
-              />
-            </div> -->
 
             <div class="chatbot-bubble-input">
               <div class="chatbot-bubble-input-inner">
-                <textarea class="chatbot-bubble-input-textarea" ref="textarea" :placeholder="t('textarea_placeholder')" style="resize: none; height: 34px;" v-model="input" @keydown.prevent.enter="sendMessage"></textarea>
-                <div class="chatbot-bubble-input-send">
-                  <div v-if="input.length>0" class="chatbot-bubble-input-clear" alt="" @click="clearInput">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#98A2B3]" data-icon="XCircle" aria-hidden="true"><path id="Solid" fill-rule="evenodd" clip-rule="evenodd" d="M8.00008 0.666016C3.94999 0.666016 0.666748 3.94926 0.666748 7.99935C0.666748 12.0494 3.94999 15.3327 8.00008 15.3327C12.0502 15.3327 15.3334 12.0494 15.3334 7.99935C15.3334 3.94926 12.0502 0.666016 8.00008 0.666016ZM10.4715 5.52794C10.7318 5.78829 10.7318 6.2104 10.4715 6.47075L8.94289 7.99935L10.4715 9.52794C10.7318 9.78829 10.7318 10.2104 10.4715 10.4708C10.2111 10.7311 9.78903 10.7311 9.52868 10.4708L8.00008 8.94216L6.47149 10.4708C6.21114 10.7311 5.78903 10.7311 5.52868 10.4708C5.26833 10.2104 5.26833 9.78829 5.52868 9.52794L7.05727 7.99935L5.52868 6.47075C5.26833 6.2104 5.26833 5.78829 5.52868 5.52794C5.78903 5.26759 6.21114 5.26759 6.47149 5.52794L8.00008 7.05654L9.52868 5.52794C9.78903 5.26759 10.2111 5.26759 10.4715 5.52794Z" fill="currentColor"></path></svg>
-                  </div>
-                  <div :class="{'send-btn': true, 'disabled': !input.length || loading}" @click="sendMessage">
-                    <img src="../../assets/send.svg" alt="">
+                <div  class="chatbot-bubble-input-area">
+                    
+                  <textarea class="chatbot-bubble-input-textarea" spellcheck="false" ref="textarea" :placeholder="t('textarea_placeholder')" v-model="input" @keydown.prevent.enter="sendMessage"></textarea>
+                  <div class="chatbot-bubble-input-send">
+                    <div v-if="input.length>0" class="chatbot-bubble-input-clear" alt="" @click="clearInput">
+                      <SearchIcon />
+                    </div>
+                    <div :class="{'send-btn': true, 'disabled': !input.length || loading}" @click="sendMessage">
+                      <img src="../../assets/send.svg" alt="">
+                    </div>
                   </div>
                 </div>
+
+
+                <div class="chatbot-bubble-input-select-area">
+                  <div class="chatbot-bubble-input-select">
+                    <Dropdown
+                      v-model="selectedProject"
+                      :options="projectOptions"
+                      placeholder="请选择项目类型"
+                      @change="handleProjectChange"
+                    />
+                  </div>
+                </div>
+
               </div>
+              
             </div>
           </div>
         </div>
@@ -108,6 +116,7 @@
   import { onMounted, onUnmounted, provide, ref, onBeforeUpdate, computed } from 'vue';
   import QA from './QA.vue';
   import Tips from './Tips.vue';
+  import SearchIcon from './SearchIcon.vue'
   import { reset, state } from './chatStore';
   import { t } from '../../i18n';
   import { disableScroll, enableScroll } from '../../utils';
