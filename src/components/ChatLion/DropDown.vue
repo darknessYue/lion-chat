@@ -128,10 +128,10 @@
   
   .dropdown-list {
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 0;
     right: 0;
-    margin-top: 4px;
+    margin-bottom: 4px;
     border: 1px solid #d1d5db;
     border-radius: 4px;
     background-color: white;
