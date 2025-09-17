@@ -7,7 +7,7 @@ const options = {
   tool: true,
   inputs: {
     role: 'admin',
-    userid: 'user-1214'
+    userid: 19
   }
 }
 

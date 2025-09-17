@@ -172,7 +172,7 @@
   const isMaxSize = ref(false)
 
   // 下拉选择
-  const selectedProject = ref<number>(0);
+  const selectedProject = ref<string>('0');
   const handleProjectChange = (option: any) => {
     console.log('Selected project:', option);
   };
@@ -180,11 +180,11 @@
   const projectOptions = ref<any[]>([
     {
       label: '项目相关',
-      value: 1
+      value: '1'
     },
     {
       label: '项目无关',
-      value: 0
+      value: '0'
     }
   ])
 
